@@ -1,0 +1,35 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Snowball BankSystem</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <div class="layui-row site-content">
+            <h1 class="site">Welcome to Snowball BankSystem!</h1>
+        </div>
+        <div class="site-text">
+            <ul class="layui-nav">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                <li class="layui-nav-item"><a href="/BankSystem/show_all_branches">查看所有支行</a></li>
+                <li class="layui-nav-item"><a href="/BankSystem/show_all_customers">查看所有客户</a></li>
+                <li class="layui-nav-item"><a href="/BankSystem/show_all_accounts">查看所有账户</a></li>
+                <li class="layui-nav-item"><a href="/BankSystem/show_all_loans">查看所有贷款</a></li>
+                <li class="layui-nav-item"><a href="/BankSystem/stats_home">查看业务统计信息</a></li>
+            </ul>
+        </div>
+
+        <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function(){
+              var element = layui.element;
+              
+              //…
+            });
+        </script>
+    </body>
+</html>

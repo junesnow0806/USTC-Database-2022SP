@@ -1,0 +1,69 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看储蓄{{ year }}年季度/月份数据</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <h2 align="center">-----季度统计-----</h2>
+        {% for stats_season in stats_seasons %}
+            <h3>第{{ stats_season.season }}季度统计:</h3>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>支行</th>
+                    <th>储蓄总金额</th>
+                    <th>储蓄客户数</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for branch_dict in stats_season.branch_dicts %}
+                    <tr>
+                        <td>{{ branch_dict.branch_name }}</td>
+                        <td>{{ branch_dict.total_amount }}</td>
+                        <td>{{ branch_dict.customer_count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+
+        <h2 align="center">-----月份统计-----</h2>
+        {% for stats_month in stats_months %}
+            <h3>{{ stats_month.month }}月统计:</h3>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>支行</th>
+                    <th>储蓄总金额</th>
+                    <th>储蓄客户数</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for branch_dict in stats_month.branch_dicts %}
+                    <tr>
+                        <td>{{ branch_dict.branch_name }}</td>
+                        <td>{{ branch_dict.total_amount }}</td>
+                        <td>{{ branch_dict.customer_count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+
+
+
+        <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function(){
+              var element = layui.element;
+              
+              //…
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看贷款年份数据</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        {% for stats_year in stats_years %}
+            <h2>{{ stats_year.year }}年统计:</h2>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>支行</th>
+                    <th>贷款总金额</th>
+                    <th>贷款客户数</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for branch_dict in stats_year.branch_dicts %}
+                    <tr>
+                        <td>{{ branch_dict.branch_name }}</td>
+                        <td>{{ branch_dict.total_amount }}</td>
+                        <td>{{ branch_dict.customer_count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a href="/BankSystem/stats_loan_year?year={{ stats_year.year }}" class="layui-btn">查看{{ stats_year.year }}年季度/月份统计</a>
+        {% endfor %}
+
+
+        <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function(){
+              var element = layui.element;
+              
+              //…
+            });
+        </script>
+    </body>
+</html>

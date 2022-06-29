@@ -1,0 +1,42 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看客户的负责人信息</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <h3>客户姓名: {{ customer.name }}</h3>
+        <h3>客户身份证号: {{ customer.id }}</h3>
+        <h3>客户电话: {{ customer.phone }}</h3>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>负责人姓名</th>
+                <th>负责人身份证号</th>
+                <th>负责人电话</th>
+                <th>负责人住址</th>
+                <th>负责人所属部门</th>
+                <th>负责人开始工作日期</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ principal.name }}</td>
+                <td>{{ principal.id }}</td>
+                <td>{{ principal.phone }}</td>
+                <td>{{ principal.address }}</td>
+                <td>{{ principal.department.name }}</td>
+                <td>{{ principal.start_date }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>
+        <a href="/BankSystem/show_all_customers" class="layui-btn">返回</a>
+        </p>
+
+    </body>
+</html>

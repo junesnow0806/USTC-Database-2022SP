@@ -1,0 +1,55 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看所有贷款</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <table class="layui-table">
+            <thead>
+                <tr>
+                    <th>贷款号</th>
+                    <th>贷款金额</th>
+                    <th>贷款支行</th>
+                    <th>贷款状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for loan in all_loans %}
+                <tr>
+                    <td>{{ loan.no }}</td>
+                    <td>{{ loan.amount }}</td>
+                    <td>{{ loan.branch.name }}</td>
+                    <td>{{ loan.status }}</td>
+                    <td>
+                        <a href="/BankSystem/delete_loan?loan_no={{ loan.no }}" class="layui-btn">删除</a>
+                        <a href="/BankSystem/show_loan_customers?loan_no={{ loan.no }}" class="layui-btn">查看关联客户</a>
+                        <a href="/BankSystem/add_loan_customer?loan_no={{ loan.no }}&branch_name={{ loan.branch.name }}" class="layui-btn">添加关联客户</a>
+                        <a href="/BankSystem/show_all_payouts?loan_no={{ loan.no }}" class="layui-btn">查看发放记录</a>
+                        <a href="/BankSystem/create_payout?loan_no={{ loan.no }}" class="layui-btn">添加发放记录</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <p>
+            <a href="/BankSystem/create_loan" class="layui-btn">创建新的贷款</a>
+            <a href="/BankSystem/" class="layui-btn">返回首页</a>
+        </p>
+
+        <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function(){
+              var element = layui.element;
+              
+              //…
+            });
+        </script>
+    </body>
+</html>

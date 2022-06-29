@@ -1,0 +1,40 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看储蓄账户关联客户</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <h2>储蓄账户号: {{ deposit_no }}</h2>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>客户身份证号</th>
+                <th>客户姓名</th>
+                <th>客户电话</th>
+                <th>客户住址</th>
+                <th>最近访问日期</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>{{ customer.created_time }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <p>
+            <a href="/BankSystem/add_account_customer?account_no={{ deposit.no }}&account_type=DEPOSIT&branch_name={{ deposit.branch.name }}" class="layui-btn">添加关联客户</a>
+        </p>
+
+    </body>
+</html>

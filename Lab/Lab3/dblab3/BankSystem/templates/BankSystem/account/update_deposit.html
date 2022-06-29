@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更改储蓄账户信息</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+</head>
+<body>
+    <form class="layui-form" action="/BankSystem/update_account" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认账户号</label>
+            <div class="layui-input-inline">
+                <input type="text" name="account_no" value="{{ account_no }}" readonly required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户类型</label>
+            <div class="layui-input-inline">
+                <input type="text" name="account_type" value="{{ account_type }}" readonly required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开户支行</label>
+            <div class="layui-input-inline">
+                <input type="text" name="branch_name" value="{{ branch_name }}" readonly required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入余额</label>
+            <div class="layui-input-inline">
+                <input type="text" name="balance" value="{{ balance }}" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入利率</label>
+            <div class="layui-input-inline">
+                <input type="text" name="interest_rate" value="{{ interest_rate }}" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入货币类型</label>
+            <div class="layui-input-inline">
+                <input type="text" name="currency_type" value="{{ currency_type }}" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认修改</label>
+            <div class="layui-input-inline">
+                <input type="submit" value="提交修改" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </form>
+
+    <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+            });
+        });
+    </script>
+</body>
+</html>

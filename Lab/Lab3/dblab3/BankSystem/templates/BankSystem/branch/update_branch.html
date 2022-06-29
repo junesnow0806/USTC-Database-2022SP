@@ -1,0 +1,21 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>更改支行信息</title>
+    </head>
+    <body>
+        <form action="/BankSystem/update_branch?branch_name={{ branch.name }}" method="post">
+            <p>
+                name <input type="text" value="{{ branch.name }}">
+            </p>
+            <p>
+                city <input type="text" value="{{ branch.city }}">
+            </p>
+            <p>
+                assets <input type="text" name='assets' value="{{ branch.assets }}">
+            </p>
+            <p>
+                <input type="submit" value="提交修改">
+            </p>
+    </body>
+</html>

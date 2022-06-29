@@ -1,0 +1,38 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看客户的联系人信息</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <h3>客户姓名: {{ customer.name }}</h3>  
+        <h3>客户身份证号: {{ customer.id }}</h3>   
+        <h3>客户电话: {{ customer.phone }}</h3>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>联系人姓名</th>
+                <th>联系人电话</th>
+                <th>联系人邮箱</th>
+                <th>联系人与客户的关系</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.relationship }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>
+        <a href="/BankSystem/show_all_customers" class="layui-btn">返回</a>
+        </p>
+
+    </body>
+</html>

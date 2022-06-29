@@ -1,0 +1,70 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>查看客户的账户信息</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <h3>客户姓名: {{ customer.name }}</h3>
+        <h3>客户身份证号: {{ customer.id }}</h3>
+        <h3>客户电话: {{ customer.phone }}</h3>
+        -----------------------------------------
+        <h3>储蓄账户</h3>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>账户号</th>
+                <th>余额</th>
+                <th>利率</th>
+                <th>货币类型</th>
+                <th>开户支行</th>
+                <th>开户日期</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for deposit in deposits %}
+                <tr>
+                    <td>{{ deposit.no }}</td>
+                    <td>{{ deposit.balance }}</td>
+                    <td>{{ deposit.interest_rate }}</td>
+                    <td>{{ deposit.currency_type }}</td>
+                    <td>{{ deposit.branch.name }}</td>
+                    <td>{{ deposit.open_date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>支票账户</h3>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>账户号</th>
+                <th>余额</th>
+                <th>透支额</th>
+                <th>开户支行</th>
+                <th>开户日期</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cheque in cheques %}
+                <tr>
+                    <td>{{ cheque.no }}</td>
+                    <td>{{ cheque.balance }}</td>
+                    <td>{{ cheque.overdraft }}</td>
+                    <td>{{ cheque.branch.name }}</td>
+                    <td>{{ cheque.open_date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <p>
+            <a href="/BankSystem/show_all_customers" class="layui-btn">返回</a>
+        </p>
+
+    </body>
+</html>

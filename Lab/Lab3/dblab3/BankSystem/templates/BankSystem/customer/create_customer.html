@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建新的客户</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+</head>
+<body>
+    <form class="layui-form" action="/BankSystem/create_customer/" method="post">    
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入身份证号</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="id" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入姓名</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="name" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入电话号码</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="phone" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入住址</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="address" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">负责人身份证号</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="principal_id" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">业务类型</label>
+            <div class="layui-input-inline">
+                <select name="principal_type">
+                    <option value="ACCOUNT">账户</option>
+                    <option value="LOAN">贷款</option>
+                    <option value="BOTH">账户和贷款</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人姓名</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="contact_name" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人电话</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="contact_phone" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人邮箱</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="contact_email" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系人与客户的关系</label> 
+            <div class="layui-input-inline">
+                <input type="text" name="contact_relationship" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认创建</label>
+            <div class="layui-input-inline">
+                <input type="submit" value="提交创建" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </form>
+
+    <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+            });
+        });
+    </script>
+</body>
+</html>

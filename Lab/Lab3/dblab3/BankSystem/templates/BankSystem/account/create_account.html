@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建新的账户</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+</head>
+<body>
+    <form class="layui-form" action="/BankSystem/create_account/" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择支行</label>
+            <div class="layui-input-inline">
+                <select name="branch_name" lay-verify="required">
+                {% for branch in all_branches %}
+                    <option value="{{ branch.name }}">{{ branch.name }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户类型</label>
+            <div class="layui-input-inline">
+                <select name="account_type" lay-verify="required">
+                    <option value="储蓄账户">储蓄账户</option>
+                    <option value="支票账户">支票账户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入余额</label>
+            <div class="layui-input-inline">
+                <input type="text" name="balance" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入利率</label>
+            <div class="layui-input-inline">
+                <input type="text" name="interest_rate"  lay-verify="" placeholder="仅储蓄账户需要, 单位为%"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">货币类型</label>
+            <div class="layui-input-inline">
+                <input type="text" name="currency_type"  lay-verify="" placeholder="仅储蓄账户需要"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入透支额</label>
+            <div class="layui-input-inline">
+                <input type="text" name="overdraft"  lay-verify="" placeholder="仅支票账户需要"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">开户日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="open_date"  lay-verify="" placeholder="yyyy-mm-dd, 默认为提交日期"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认创建</label>
+            <div class="layui-input-inline">
+                <input type="submit" value="提交创建" required  lay-verify="required"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </form>
+
+    <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+            });
+        });
+    </script>
+</body>
+</html>

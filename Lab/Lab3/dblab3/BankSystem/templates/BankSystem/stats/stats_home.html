@@ -1,0 +1,35 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Statistics Home</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'BankSystem/layui/css/layui.css' %}" >
+    </head>
+    <body>
+        <div class="layui-row site-content">
+            <h1 class="site-">查看业务统计数据</h1>
+        </div>
+        <div class="site-text">
+            <ul class="layui-nav">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                <li class="layui-nav-item"><a href="/BankSystem/stats_deposit">储蓄业务</a></li>
+                <li class="layui-nav-item"><a href="/BankSystem/stats_loan">贷款业务</a></li>
+                <li class="layui-nav-item"><a href="/BankSystem/">返回首页</a></li>
+            </ul>
+        </div>
+
+
+
+        <script src="{% static 'BankSystem/layui/layui.js' %}"></script>
+        <script>
+            //注意：导航 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function(){
+              var element = layui.element;
+              
+              //…
+            });
+        </script>
+    </body>
+</html>
